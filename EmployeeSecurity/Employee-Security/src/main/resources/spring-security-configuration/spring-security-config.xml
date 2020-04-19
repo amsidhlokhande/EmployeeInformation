@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+	<security:http>
+
+		<!-- Add url pattern which need to be secured.Here the urls that content 
+			/secured/ with be secured only -->
+		<security:intercept-url pattern="/profile**"
+			access="ROLE_USER" />
+
+		<!-- Adds Support for Custom Login Form authentication -->
+		<security:form-login login-page="/login"
+			default-target-url="/success" username-parameter="username"
+			password-parameter="password" authentication-failure-url="/login?error" />
+		<security:logout logout-success-url="/login?logout" />
+	</security:http>
+
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

@@ -1,0 +1,1 @@
+This is Employee Information Project with Spring and Hibernate
